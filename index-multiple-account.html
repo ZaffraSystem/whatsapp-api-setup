@@ -1,3 +1,4 @@
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,7 +151,7 @@
 					$('.client-container').append(template);
 
 					if (session.ready) {
-						$(`.client.${clientClass} .logs`).prepend($('<li>').text('Whatsapp Conectado!'));
+						$(`.client.${clientClass} .logs`).prepend($('<li>').text('Conectado!'));
 					} else {
 						$(`.client.${clientClass} .logs`).prepend($('<li>').text('Conectando...'));
 					}

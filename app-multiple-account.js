@@ -1,4 +1,4 @@
-const { Client, MessageMedia, LocalAuth } = require('whatsapp-web.js');
+﻿const { Client, MessageMedia, LocalAuth } = require('whatsapp-web.js');
 const express = require('express');
 const socketIO = require('socket.io');
 const qrcode = require('qrcode');
@@ -92,13 +92,13 @@ const createSession = function(id, description) {
     console.log('QR RECEIVED', qr);
     qrcode.toDataURL(qr, (err, url) => {
       io.emit('qr', { id: id, src: url });
-      io.emit('message', { id: id, text: 'Código QR gerado!' });
+      io.emit('message', { id: id, text: 'QR Gerado!' });
     });
   });
 
   client.on('ready', () => {
     io.emit('ready', { id: id });
-    io.emit('message', { id: id, text: 'Whatsapp Conectado!' });
+    io.emit('message', { id: id, text: 'Conectado!' });
 
     const savedSessions = getSessionsFile();
     const sessionIndex = savedSessions.findIndex(sess => sess.id == id);
@@ -108,15 +108,15 @@ const createSession = function(id, description) {
 
   client.on('authenticated', () => {
     io.emit('authenticated', { id: id });
-    io.emit('message', { id: id, text: 'Whatsapp Autenticado!' });
+    io.emit('message', { id: id, text: 'Autenticando...' });
   });
 
   client.on('auth_failure', function() {
-    io.emit('message', { id: id, text: 'Falha de autenticação, reiniciando...' });
+    io.emit('message', { id: id, text: 'Reiniciando...' });
   });
 
   client.on('disconnected', (reason) => {
-    io.emit('message', { id: id, text: 'Whatsapp foi desconectado!' });
+    io.emit('message', { id: id, text: 'Desconectado!' });
     client.destroy();
     client.initialize();
 
