@@ -43,9 +43,9 @@ const createSessionsFileIfNotExists = function() {
   if (!fs.existsSync(SESSIONS_FILE)) {
     try {
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify([]));
-      console.log('Sessions file created successfully.');
+      console.log('Sessão criado com sucesso.');
     } catch(err) {
-      console.log('Failed to create sessions file: ', err);
+      console.log('Falha ao criar arquivo de sessão: ', err);
     }
   }
 }
@@ -65,7 +65,7 @@ const getSessionsFile = function() {
 }
 
 const createSession = function(id, description) {
-  console.log('Creating session: ' + id);
+  console.log('Criando sessão: ' + id);
   const client = new Client({
     restartOnAuthFail: true,
     puppeteer: {
@@ -92,13 +92,13 @@ const createSession = function(id, description) {
     console.log('QR RECEIVED', qr);
     qrcode.toDataURL(qr, (err, url) => {
       io.emit('qr', { id: id, src: url });
-      io.emit('message', { id: id, text: 'QR Code received, scan please!' });
+      io.emit('message', { id: id, text: 'Código QR gerado!' });
     });
   });
 
   client.on('ready', () => {
     io.emit('ready', { id: id });
-    io.emit('message', { id: id, text: 'Whatsapp is ready!' });
+    io.emit('message', { id: id, text: 'Whatsapp Conectado!' });
 
     const savedSessions = getSessionsFile();
     const sessionIndex = savedSessions.findIndex(sess => sess.id == id);
@@ -108,15 +108,15 @@ const createSession = function(id, description) {
 
   client.on('authenticated', () => {
     io.emit('authenticated', { id: id });
-    io.emit('message', { id: id, text: 'Whatsapp is authenticated!' });
+    io.emit('message', { id: id, text: 'Whatsapp Autenticado!' });
   });
 
   client.on('auth_failure', function() {
-    io.emit('message', { id: id, text: 'Auth failure, restarting...' });
+    io.emit('message', { id: id, text: 'Falha de autenticação, reiniciando...' });
   });
 
   client.on('disconnected', (reason) => {
-    io.emit('message', { id: id, text: 'Whatsapp is disconnected!' });
+    io.emit('message', { id: id, text: 'Whatsapp foi desconectado!' });
     client.destroy();
     client.initialize();
 
