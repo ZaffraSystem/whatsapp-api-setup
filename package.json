@@ -1,7 +1,7 @@
 {
   "name": "whatsapp-api",
   "version": "1.0.0",
-  "description": "Whatsapp API Zaffra System",
+  "description": "Whatsapp api by Ngekoding",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -12,7 +12,7 @@
     "whatsapp-api",
     "node.js"
   ],
-  "author": "Zaffra System",
+  "author": "Nur Muhammad",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.20.0",

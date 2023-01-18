@@ -1,8 +1,7 @@
-﻿
 <!DOCTYPE html>
 <html>
 <head>
-	<title>🔵Whatsapp API</title>
+	<title>Whatsapp API by Ngekoding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- This parts is optional, just for improve the styles -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -22,8 +21,8 @@
     }
     .form-container input,
     .form-container textarea {
-      width: 70%;
-      border: 2px solid #efefef;
+      width: 100%;
+      border: 1px solid #ccc;
       border-radius: 2px;
       padding: 5px 8px;
       font-family: inherit;
@@ -31,19 +30,19 @@
     .add-client-btn {
       padding: 6px 15px;
       margin-top: 10px;
-      background: #4093f5;
+      background: green;
       color: white;
-      border: 1px solid #4093f5;
+      border: 1px solid rgb(0, 93, 0);
       border-radius: 2px;
     }
     .client-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       grid-gap: 15px;
       margin-top: 30px;
     }
     .client {
-      border: 2px solid #efefef;
+      border: 1px solid #ccc;
       border-radius: 4px;
       padding: 15px;
     }
@@ -51,7 +50,7 @@
       display: none; /* Showed when qr code received */
       width: 100%;
       margin: 10px 0;
-      border: 2px solid #efefef;
+      border: 1px solid #efefef;
       border-radius: 4px;
     }
     ul.logs {
@@ -65,7 +64,7 @@
       font-size: 14px;
     }
     ul.logs li:first-child {
-      color: #4093f5;
+      color: green;
     }
     .hide {
       display: none;
@@ -76,22 +75,22 @@
 
 	<div id="app">
 		<h1>Whatsapp API</h1>
-		<p>Powered by Zaffra System</p>
+		<p>Powered by Ngekoding</p>
 		<div class="form-container">
-			<label for="client-id">SENDER ID</label><br>
-			<input type="text" id="client-id" placeholder="Informe um ID">
+			<label for="client-id">ID</label><br>
+			<input type="text" id="client-id" placeholder="Masukkan ID">
 			<br><br>
-			<label for="client-description">ESTABELECIMENTO</label><br>
-			<textarea rows="3" id="client-description" placeholder="Nome do estabelecimento"></textarea>
+			<label for="client-description">Deskripsi</label><br>
+			<textarea rows="3" id="client-description" placeholder="Masukkan deskripsi"></textarea>
 			<br>
-			<button class="add-client-btn">GERAR SESSÃO</button>
+			<button class="add-client-btn">Tambah Client</button>
 		</div>
 		<div class="client-container">
 			<div class="client hide">
-				<h4 class="title"></h4>
+				<h3 class="title"></h3>
 				<p class="description"></p>
 				<img src="" alt="QR Code" id="qrcode">
-				<h4>Logs:</h4>
+				<h3>Logs:</h3>
 				<ul class="logs"></ul>
 			</div>
 		</div>
@@ -123,7 +122,7 @@
 
 				template.find('.title').html(clientId);
 				template.find('.description').html(clientDescription);
-				template.find('.logs').append($('<li>').text('Conectando...'));
+				template.find('.logs').append($('<li>').text('Connecting...'));
 				$('.client-container').append(template);
 
 				socket.emit('create-session', {
@@ -151,9 +150,9 @@
 					$('.client-container').append(template);
 
 					if (session.ready) {
-						$(`.client.${clientClass} .logs`).prepend($('<li>').text('Conectado!'));
+						$(`.client.${clientClass} .logs`).prepend($('<li>').text('Whatsapp is ready!'));
 					} else {
-						$(`.client.${clientClass} .logs`).prepend($('<li>').text('Conectando...'));
+						$(`.client.${clientClass} .logs`).prepend($('<li>').text('Connecting...'));
 					}
 				}
 			});
