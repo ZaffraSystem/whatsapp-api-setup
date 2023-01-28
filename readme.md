@@ -18,11 +18,6 @@
 	
 	F) 👉git clone https://github.com/ZaffraSystem/whatsapp-api-setup.git
 	
-	G) 👉cd whatsapp-api-setup
-	
-	H) 👉npm install
-	
-	I) 👉npm run start:dev
 
 
 # INICIAR APLICAÇÃO NA VM
