@@ -20,7 +20,7 @@
 	
 
 
-# INICIAR APLICAÇÃO NA VM
+# INICIAR APLICAÇÃO API
 
 	
 	A) 👉sudo su root
