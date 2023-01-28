@@ -23,3 +23,14 @@
 	H) 👉npm install
 	
 	I) 👉npm run start:dev
+
+
+# INICIAR APLICAÇÃO NA VM
+
+	
+	A) 👉sudo su root
+	
+	B) 👉cd whatsapp-api-setup
+	
+	C) 👉npm run start:dev
+	
