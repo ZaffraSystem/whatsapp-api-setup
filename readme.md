@@ -15,6 +15,8 @@
 		E) 👉sudo apt-get install -y nodejs
 	
 		F) 👉git clone https://github.com/ZaffraSystem/whatsapp-api-setup.git
+		
+		G) 👉npm install
 
 
 # INICIAR APLICAÇÃO API
