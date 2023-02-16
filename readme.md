@@ -10,7 +10,7 @@
 	
 		C) 👉sudo apt-get install -y git
 	
-		D) 👉curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+		D) 👉curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 	
 		E) 👉sudo apt-get install -y nodejs
 	
